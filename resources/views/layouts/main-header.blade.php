@@ -162,31 +162,35 @@
 									<div class="menu-header-content bg-primary text-right">
 										<div class="d-flex">
 											<h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">الاشعارات</h6>
-											<span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All Read</span>
+											<span class="badge badge-pill badge-warning mr-auto my-auto float-left"><a href="{{ url('MarkAsRead_All') }}">Mark All Read</a></span>
 										</div>
-										<p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">You have {{ auth()->user()->unreadNotifications->count() }}  unread Notifications</p>
+										<div id="notifications_count">
+											<p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">You have {{ auth()->user()->unreadNotifications->count() }}  unread Notifications</p>
+										</div>
 									</div>
 									<div class="main-notification-list Notification-scroll">
-										
-										
-									@foreach(auth()->user()->unreadNotifications as $notification)
-										<a class="d-flex p-3 border-bottom" href="{{ url('invoicesDetails/') }}/{{$notification->data['id']}}">
-											<div class="notifyimg bg-primary">
-												<i class="la la-check-circle text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h6 class="notification-label mb-1">
-													{{ $notification->data['title'] }} : {{ $notification->data['user'] }}
-												</h6>
-												<div class="notification-subtext">
-													{{ $notification->created_at }}
+									<div id="unreadNotifications">
+									@if(Auth::user()->roles_name == ["owner"])
+										@foreach(auth()->user()->unreadNotifications as $notification)
+											<a class="d-flex p-3 border-bottom" href="{{ url('invoicesDetails/') }}/{{$notification->data['id']}}">
+												<div class="notifyimg bg-primary">
+													<i class="la la-check-circle text-white"></i>
 												</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-									@endforeach
+												<div class="mr-3">
+													<h6 class="notification-label mb-1">
+														{{ $notification->data['title'] }} : {{ $notification->data['user'] }}
+													</h6>
+													<div class="notification-subtext">
+														{{ $notification->created_at }}
+													</div>
+												</div>
+												<div class="mr-auto" >
+													<i class="las la-angle-left text-left text-muted"></i>
+												</div>
+											</a>
+										@endforeach
+									@endif
+									</div><!-- end #unreadNotifications id -->
 									</div>
 									<div class="dropdown-footer">
 										<a href="">VIEW ALL</a>

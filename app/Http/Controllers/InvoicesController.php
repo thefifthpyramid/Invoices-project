@@ -121,7 +121,7 @@ class InvoicesController extends Controller
         }
 
         //$user = User::first();
-        $user = User::find(Auth::user()->id);
+        $user = User::get();
 
         // $details = [
         //         'greeting' => 'Hi Artisan',
@@ -282,5 +282,14 @@ class InvoicesController extends Controller
     // Export Excel
     public function exportExcel(){
         return Excel::download(new InvoicesExport, 'users.xlsx');
+    }
+    public function MarkAsRead_All(Request $request){
+        $userUnreadNotification= auth()->user()->unreadNotifications;
+
+        if($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+            return back();
+        }
+
     }
 }

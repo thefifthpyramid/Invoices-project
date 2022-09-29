@@ -73,6 +73,9 @@ Route::post('/Search_invoices','InvoicesReport@Search_invoices');
 Route::get('/invoicesCustomers','CustomersReport@index');
 Route::post('/SearchCustomers','CustomersReport@SearchCustomers');
 
+
+Route::get('/MarkAsRead_All','InvoicesController@MarkAsRead_All');
+
 // Footer
 Route::get('/{page}', 'AdminController@index');
 Route::get('/home', 'HomeController@index')->name('home');
