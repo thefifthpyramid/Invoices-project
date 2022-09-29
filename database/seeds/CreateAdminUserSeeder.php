@@ -19,12 +19,12 @@ class CreateAdminUserSeeder extends Seeder
         $user = User::create([
             'name' => 'Ahmed Ali Klay', 
             'email' => 'AhmedAliKlay@outlook.com',
-            'password' => bcrypt('Ahmed2022Klayphp artisan db:seed --class=PermissionTableSeeder'),
-            'roles_name' => ['Admin'],
+            'password' => bcrypt('Ahmed2022Klay'),
+            'roles_name' => ['owner'],
             'Status' => 'مفعل'
         ]);
     
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'owner']);
      
         $permissions = Permission::pluck('id','id')->all();
    

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 
 use App\invoices;
+use App\Notifications\noti_CreatInvoices;
 use App\invoices_details;
 use App\invoices_attechments;
 use App\sections;
@@ -120,13 +121,23 @@ class InvoicesController extends Controller
         }
 
         //$user = User::first();
+        $user = User::find(Auth::user()->id);
 
-        $user = User::get();
-        $invoices = invoices::latest()->first();
-        Notification::send($user, new NotificationInvoicePaid($invoices));
+        // $details = [
+        //         'greeting' => 'Hi Artisan',
+        //         'body' => 'This is our example notification tutorial',
+        //         'thanks' => 'Thank you for visiting codechief.org!',
+        // ];
+        $invoices = Invoices::latest()->first();
+        Notification::send($user, new noti_CreatInvoices($invoices));
+       // $user->notify(new \App\Notifications\noti_CreatInvoices($invoices));
+        //%%% mail %%%
+        // $user = User::get();
+        // $invoices = invoices::latest()->first();
+        // Notification::send($user, new NotificationInvoicePaid($invoices));
 
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
-        //return back();
+        return back();
     }
 
     /**

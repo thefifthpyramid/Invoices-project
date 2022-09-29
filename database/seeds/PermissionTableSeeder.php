@@ -42,6 +42,7 @@ class PermissionTableSeeder extends Seeder
         'تعديل الفاتورة',
         'ارشفة الفاتورة',
         'طباعةالفاتورة',
+        
         'اضافة مرفق',
         'حذف المرفق',
 
@@ -61,6 +62,7 @@ class PermissionTableSeeder extends Seeder
         'اضافة قسم',
         'تعديل قسم',
         'حذف قسم',
+
         'الاشعارات'
         ];
      

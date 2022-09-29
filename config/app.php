@@ -164,7 +164,6 @@ return [
         // Mine
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,// ...PermissionServiceProvider
-
         /*
          * Package Service Providers...
          */
@@ -177,8 +176,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        
+        //HtmlServiceProvider
         Collective\Html\HtmlServiceProvider::class,
+        //ChartjsServiceProvider
+        Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class,
 
     ],
 

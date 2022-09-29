@@ -56,6 +56,8 @@ Route::get('/download/{folder_name}/{file_name}','InvoicesAttechmentsController@
 Route::post('/Additional_InvoiceAttachments','InvoicesAttechmentsController@store');
 // Route::post('/editing_product/{id}','ProductsController@update');
 // @@@@@@@@@@@@@@@ //
+Route::get('/home', 'HomeController@index')->name('home');
+// @@@@@@@@@@@@
 
 //middleware  
 Route::group(['middleware' => ['auth']], function() {
@@ -64,12 +66,18 @@ Route::group(['middleware' => ['auth']], function() {
     //Route::resource('products', ProductController::class);
 });
 
+// invoicesReport
+Route::get('/invoicesReport','InvoicesReport@index');
+Route::post('/Search_invoices','InvoicesReport@Search_invoices');
+//invoicesCustomers 
+Route::get('/invoicesCustomers','CustomersReport@index');
+Route::post('/SearchCustomers','CustomersReport@SearchCustomers');
+
 // Footer
 Route::get('/{page}', 'AdminController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 

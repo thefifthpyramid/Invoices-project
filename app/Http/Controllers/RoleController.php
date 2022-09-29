@@ -17,11 +17,11 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    function __construct()
-    {
-         $this->middleware('permission:عرض صلاحية', ['only' => ['index']]);
-         $this->middleware('permission:اضافة صلاحية', ['only' => ['create']]);
-    }
+    // function __construct()
+    // {
+    //      $this->middleware('permission:عرض صلاحية', ['only' => ['index']]);
+    //      $this->middleware('permission:اضافة صلاحية', ['only' => ['create']]);
+    // }
     
     /**
      * Display a listing of the resource.
